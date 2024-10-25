@@ -31,11 +31,11 @@ public class Answer {
 
     public Answer(Long id, NsUser writer, Question question, String contents) {
         this.id = id;
-        if(writer == null) {
+        if (writer == null) {
             throw new UnAuthorizedException();
         }
 
-        if(question == null) {
+        if (question == null) {
             throw new NotFoundException();
         }
 
@@ -48,7 +48,7 @@ public class Answer {
         validateDeletion(loginUser);
         this.deleted = true;
 
-        return new DeleteHistory(ContentType.ANSWER, id, writer, LocalDateTime.now());
+        return DeleteHistory.answerOf(id, writer, LocalDateTime.now());
     }
 
     private void validateDeletion(NsUser loginUser) throws CannotDeleteException {
