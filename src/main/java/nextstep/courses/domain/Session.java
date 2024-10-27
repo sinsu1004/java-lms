@@ -12,6 +12,8 @@ public class Session {
 
     private SessionType type;
 
+    private SessionState state;
+
     private int studentCount;
 
     private int maxStudentCount;
@@ -22,13 +24,14 @@ public class Session {
 
     private LocalDateTime endedAt;
 
-    public Session(Long id, SessionImage image, SessionType type, int maxStudentCount,
+    public Session(Long id, SessionImage image, SessionType type, SessionState state, int maxStudentCount,
                    Long price, LocalDateTime startedAt, LocalDateTime endedAt) {
         validateSession(type, maxStudentCount, price);
 
         this.id = id;
         this.image = image;
         this.type = type;
+        this.state = state;
         this.studentCount = 0;
         this.maxStudentCount = maxStudentCount;
         this.price = price;
