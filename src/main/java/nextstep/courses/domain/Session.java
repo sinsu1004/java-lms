@@ -39,6 +39,32 @@ public class Session {
         this.endedAt = endedAt;
     }
 
+    public static Session ofFree(SessionImage image, SessionState state, int maxStudentCount, Long price, LocalDateTime startedAt, LocalDateTime endedAt) {
+        return new Session(
+                0L,
+                image,
+                SessionType.FREE,
+                state,
+                maxStudentCount,
+                price,
+                startedAt,
+                endedAt
+        );
+    }
+
+    public static Session ofPaid(SessionImage image, SessionState state, int maxStudentCount, Long price, LocalDateTime startedAt, LocalDateTime endedAt) {
+        return new Session(
+                0L,
+                image,
+                SessionType.PAID,
+                state,
+                maxStudentCount,
+                price,
+                startedAt,
+                endedAt
+        );
+    }
+
     private void validateSession(SessionType type, int maxStudentCount, Long price) {
         if (type == SessionType.PAID) {
             validatePaidSession(maxStudentCount, price);
@@ -72,7 +98,7 @@ public class Session {
     }
 
     private void validateEnrollment(Payment payment) {
-        if (state.equals(SessionState.RECRUITING)){
+        if (!state.equals(SessionState.RECRUITING)) {
             throw new IllegalStateException("모집 중인 강의만 수강 신청 가능합니다.");
         }
         if (type == SessionType.PAID) {
@@ -90,5 +116,16 @@ public class Session {
     }
 
 
+    public SessionType getType() {
+        return type;
+    }
+
+    public int getMaxStudentCount() {
+        return maxStudentCount;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
 }
 

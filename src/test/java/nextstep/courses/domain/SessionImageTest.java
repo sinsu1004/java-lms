@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SessionImageTest {
+    public static final SessionImage SESSION_IMAGE = new SessionImage(1000,300,200,"jpg");
 
     @DisplayName("올바른 이미지 정보로 SessionImage를 생성할 수 있다")
     @Test
