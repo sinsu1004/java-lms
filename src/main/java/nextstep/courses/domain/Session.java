@@ -72,6 +72,9 @@ public class Session {
     }
 
     private void validateEnrollment(Payment payment) {
+        if (state.equals(SessionState.RECRUITING)){
+            throw new IllegalStateException("모집 중인 강의만 수강 신청 가능합니다.");
+        }
         if (type == SessionType.PAID) {
             validatePaidSessionEnrollment(payment);
         }
