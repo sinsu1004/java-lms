@@ -11,5 +11,8 @@ public enum SessionState {
         this.description = description;
     }
 
-    
+    public boolean canEnroll() {
+        return this == RECRUITING;
+    }
+
 }

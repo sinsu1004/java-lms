@@ -31,4 +31,8 @@ public class Payment {
     public Long getAmount() {
         return amount;
     }
+
+    public boolean canEnroll(Long price) {
+        return amount.equals(price);
+    }
 }
