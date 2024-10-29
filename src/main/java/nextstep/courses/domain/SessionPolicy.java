@@ -8,12 +8,13 @@ public class SessionPolicy {
     private final Long price;
 
     public SessionPolicy(SessionType type, int maxStudentCount, Long price) {
+        validate(type, maxStudentCount, price);
         this.type = type;
         this.maxStudentCount = maxStudentCount;
         this.price = price;
-    }
 
-    public void validate() {
+    }
+    private void validate(SessionType type, int maxStudentCount, Long price) {
         type.validate(maxStudentCount, price);
     }
 

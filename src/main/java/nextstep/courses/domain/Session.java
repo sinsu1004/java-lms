@@ -17,8 +17,6 @@ public class Session {
 
     public Session(Long id, SessionImage image, SessionType type, SessionState state, int maxStudentCount,
                    Long price, LocalDateTime startedAt, LocalDateTime endedAt) {
-        validateSessionType(type, maxStudentCount, price);
-
         this.id = id;
         this.image = image;
         this.status = new SessionStatus(state);
@@ -51,11 +49,6 @@ public class Session {
                 endedAt
         );
     }
-
-    private void validateSessionType(SessionType type, int maxStudentCount, Long price) {
-        type.validate(maxStudentCount, price);
-    }
-
 
     public void enroll(Payment payment) {
         policy.validateEnrollment(status.getStudentCount(), payment);

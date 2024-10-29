@@ -89,7 +89,6 @@ class SessionTest {
     }
 
     @Test
-    @DisplayName("유료 강의는 결제 금액이 수강료와 일치하지 않으면 수강 신청할 수 없다")
     void 유료_강의_결제금액이_수강료와_일치하지_않으면_수강신청_실패() {
         Session session = Session.ofPaid(SESSION_IMAGE, SessionState.RECRUITING, 100, 50000L, START_TIME, END_TIME);
         Payment payment = new Payment("", 0L, 0L, 0L);
@@ -100,7 +99,6 @@ class SessionTest {
     }
 
     @Test
-    @DisplayName("유료 강의는 최대 수강 인원을 초과하여 수강 신청할 수 없다")
     void 유료_강의_최대_수강_인원이_초과하면_수강신청_실패() {
         Session session = Session.ofPaid(SESSION_IMAGE, SessionState.RECRUITING, 1, 50000L, START_TIME, END_TIME);
         Payment payment = new Payment("", 0L, 0L, 50000L);
